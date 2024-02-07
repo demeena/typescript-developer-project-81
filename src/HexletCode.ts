@@ -12,7 +12,7 @@ export interface FormBuilderInterface {
   submit: (value: string) => void;
   getFields: () => string[];
 }
-export  class Tag {
+export class Tag {
   private name: string;
   private attributes: { [key: string]: string };
   private content?: string;
@@ -23,23 +23,31 @@ export  class Tag {
     this.content = content;
   }
 
-  toString(): string {
-    const attrs = Object.entries(this.attributes)
+  private formatAttributes(): string {
+    return Object.entries(this.attributes)
       .map(([key, value]) => `${key}="${value}"`)
       .join(' ');
-  
-    if (this.content !== undefined) {
-      
-      return `<${this.name}${attrs.length > 0 ? ' ' + attrs : ''}>${this.content}</${this.name}>`;
-    } else {
-      
-      const isSingleTag = this.name === 'img' || this.name === 'input' || this.name === 'br';
-      const spaceBeforeSlash = attrs.length > 0 && !isSingleTag ? ' ' : '';
-      return `<${this.name}${attrs.length > 0 ? ' ' + attrs : ''}${spaceBeforeSlash}${isSingleTag ? '/' : ''}>`;
-    }
   }
-  
+
+  private wrapContent(): string {
+    const attrs = this.formatAttributes();
+    return `<${this.name}${attrs ? ' ' + attrs : ''}>${this.content}</${this.name}>`;
+  }
+
+  private selfClosingTag(): string {
+    const attrs = this.formatAttributes();
+    const spaceBeforeSlash = attrs ? ' ' : '';
+    return `<${this.name}${spaceBeforeSlash}${attrs}/>`;
+  }
+
+  toString(): string {
+    const isSingleTag = this.name === 'img' || this.name === 'input' || this.name === 'br';
+    return this.content !== undefined || !isSingleTag
+      ? this.wrapContent()
+      : this.selfClosingTag();
+  }
 }
+
 
 class FormBuilder implements FormBuilderInterface {
   private template: Template;
