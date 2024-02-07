@@ -4,9 +4,17 @@
   "description": "[![Actions Status](https://github.com/demeena/typescript-developer-project-81/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/demeena/typescript-developer-project-81/actions)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest",
+    "coverage": "c8 vitest",
+    "lint": "eslint . --ext .ts,.tsx"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "c8": "^9.1.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react": "^7.33.2",
+    "vitest": "^1.2.2"
+  }
 }

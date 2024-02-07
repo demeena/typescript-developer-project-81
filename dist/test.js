@@ -44,12 +44,4 @@ console.log(new HexletCode_1.Tag("label", { for: "email" }, "Email").toString())
 // <label for="email">Email</label>
 console.log(new HexletCode_1.Tag("div").toString());
 // <div></div>
-/*
- <form action="#" method="post">
-      <label for="name">Name</label>
-      <input name="name" type="text" value="rob">
-      <label for="job">Job</label>
-      <textarea cols="20" rows="40" name="job" as="textarea">hexlet</textarea>
-      <input type="submit" value="Wow">
-  </form>
-*/
+
