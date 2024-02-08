@@ -59,6 +59,11 @@ class FormBuilder implements FormBuilderInterface {
   }
 
   input(fieldName: string, options: { as?: string } = {}) {
+    
+    if (!Object.prototype.hasOwnProperty.call(this.template, fieldName)) {
+      throw new Error(`Field '${fieldName}' does not exist in the template.`);
+    }
+  
     const value = this.template[fieldName];
     let fieldHtml;
   
@@ -72,6 +77,7 @@ class FormBuilder implements FormBuilderInterface {
   
     this.fields.push(fieldHtml);
   }
+  
   
   submit(value: string) {
     this.fields.push(new Tag('input', { type: "submit", value }).toString());

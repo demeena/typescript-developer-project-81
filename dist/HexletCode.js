@@ -7,18 +7,25 @@ class Tag {
         this.attributes = attributes;
         this.content = content;
     }
-    toString() {
-        const attrs = Object.entries(this.attributes)
+    formatAttributes() {
+        return Object.entries(this.attributes)
             .map(([key, value]) => `${key}="${value}"`)
             .join(' ');
-        if (this.content !== undefined) {
-            return `<${this.name}${attrs.length > 0 ? ' ' + attrs : ''}>${this.content}</${this.name}>`;
-        }
-        else {
-            const isSingleTag = this.name === 'img' || this.name === 'input' || this.name === 'br';
-            const spaceBeforeSlash = attrs.length > 0 && !isSingleTag ? ' ' : '';
-            return `<${this.name}${attrs.length > 0 ? ' ' + attrs : ''}${spaceBeforeSlash}${isSingleTag ? '/' : ''}>`;
-        }
+    }
+    wrapContent() {
+        const attrs = this.formatAttributes();
+        return `<${this.name}${attrs ? ' ' + attrs : ''}>${this.content}</${this.name}>`;
+    }
+    selfClosingTag() {
+        const attrs = this.formatAttributes();
+        const spaceBeforeSlash = attrs ? ' ' : '';
+        return `<${this.name}${spaceBeforeSlash}${attrs}/>`;
+    }
+    toString() {
+        const isSingleTag = this.name === 'img' || this.name === 'input' || this.name === 'br';
+        return this.content !== undefined || !isSingleTag
+            ? this.wrapContent()
+            : this.selfClosingTag();
     }
 }
 exports.Tag = Tag;
@@ -28,6 +35,9 @@ class FormBuilder {
         this.fields = [];
     }
     input(fieldName, options = {}) {
+        if (!Object.prototype.hasOwnProperty.call(this.template, fieldName)) {
+            throw new Error(`Field '${fieldName}' does not exist in the template.`);
+        }
         const value = this.template[fieldName];
         let fieldHtml;
         if (options.as === 'textarea') {

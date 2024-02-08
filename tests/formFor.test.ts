@@ -14,7 +14,6 @@ describe('HexletCode.formFor', () => {
     expect(form).toBe('<form action="/users" method="POST"></form>');
   });
 
-  // Тесты для проверки вставки полей в форму
   it('creates a form with input fields based on the template', () => {
     const template = { name: 'rob', job: 'hexlet', gender: 'm' };
     const form = HexletCode.formFor(template, { method: 'post' }, (f) => {
@@ -28,5 +27,23 @@ describe('HexletCode.formFor', () => {
     expect(form).toContain('<input name="job" type="text" value="hexlet"/>');
     expect(form).toContain('<label for="gender">gender</label>');
     expect(form).toContain('<input name="gender" type="text" value="m"/>');
+  });
+
+  it('creates a form with a textarea field', () => {
+    const template = { job: 'hexlet' };
+    const form = HexletCode.formFor(template, { method: 'post' }, (f) => {
+      f.input('job', { as: 'textarea' });
+    });
+    expect(form).toContain('<label for="job">job</label>');
+    expect(form).toContain('<textarea cols="20" rows="40" name="job">hexlet</textarea>');
+  });
+
+  it('throws an error for a non-existing field', () => {
+    const template = { name: 'rob' };
+    expect(() => {
+      HexletCode.formFor(template, { method: 'post' }, (f) => {
+        f.input('age');
+      });
+    }).toThrow("Field 'age' does not exist in the template.");
   });
 });
