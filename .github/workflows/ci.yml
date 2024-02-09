@@ -17,6 +17,9 @@ jobs:
     - name: Install dependencies
       run: npm install
 
+    - name: Set execute permissions for ESLint
+      run: chmod +x node_modules/.bin/eslint
+
     - name: Run linter
       run: make lint
 

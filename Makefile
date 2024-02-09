@@ -1,5 +1,5 @@
 lint:
-	npx eslint .
+	npx eslint . --ext .ts,.tsx
 
 
   
