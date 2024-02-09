@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import HexletCode from '../src/hexletcode.ts';
+import HexletCode from '../src/hexletcode.js';
 
 describe('HexletCode.formFor', () => {
   it('creates a form with no fields with default method and action', () => {
