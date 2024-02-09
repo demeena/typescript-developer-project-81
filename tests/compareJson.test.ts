@@ -1,6 +1,6 @@
 
 import { describe, it, expect } from 'vitest';
-import { compareJson } from '../src/compareJson';
+import { compareJson } from '../dist/compareJson';
 
 describe('compareJson', () => {
   it('returns true for two identical JSON objects', () => {
