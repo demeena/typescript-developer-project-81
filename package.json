@@ -3,7 +3,7 @@
   "type": "module",
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/demeena/typescript-developer-project-81/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/demeena/typescript-developer-project-81/actions)",
-  "main": "index.js",
+  "main": "dist/hexletcode.js",
   "scripts": {
     "test": "vitest",
     "coverage": "c8 vitest",
