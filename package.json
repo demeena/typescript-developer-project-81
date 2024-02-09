@@ -5,8 +5,8 @@
   "description": "[![Actions Status](https://github.com/demeena/typescript-developer-project-81/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/demeena/typescript-developer-project-81/actions)",
   "main": "dist/hexletcode.js",
   "scripts": {
-    "test": "npx vitest",
-    "coverage": "c8 npx vitest",
+    "test": "vitest",
+    "coverage": "vitest --coverage",
     "lint": "eslint . --ext .ts,.tsx"
   },
   "keywords": [],
@@ -37,8 +37,6 @@
     "plugins": [
       "@typescript-eslint"
     ],
-    "rules": {
-     
-    }
+    "rules": {}
   }
 }
