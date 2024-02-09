@@ -20,6 +20,9 @@ jobs:
     - name: Set execute permissions for ESLint
       run: chmod +x node_modules/.bin/eslint
 
+    - name: Set execute permissions for Vitest
+      run: chmod +x node_modules/.bin/vitest
+
     - name: Run linter
       run: make lint
 
