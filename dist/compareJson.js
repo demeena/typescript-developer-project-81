@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.compareJson = void 0;
-function compareJson(obj1, obj2) {
+export function compareJson(obj1, obj2) {
     const keys1 = Object.keys(obj1).sort();
     const keys2 = Object.keys(obj2).sort();
     if (keys1.length !== keys2.length) {
@@ -15,4 +12,3 @@ function compareJson(obj1, obj2) {
     }
     return true;
 }
-exports.compareJson = compareJson;

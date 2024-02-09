@@ -1,4 +1,4 @@
-export function compareJson(obj1: Record<string, any>, obj2: Record<string, any>): boolean {
+export function compareJson(obj1: Record<string, unknown>, obj2: Record<string, unknown>): boolean {
     const keys1 = Object.keys(obj1).sort();
     const keys2 = Object.keys(obj2).sort();
     

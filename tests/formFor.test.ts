@@ -4,12 +4,14 @@ import HexletCode from '../src/hexletCode';
 describe('HexletCode.formFor', () => {
   it('creates a form with no fields with default method and action', () => {
     const template = {};
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const form = HexletCode.formFor(template, { method: 'post' }, (f) => {});
     expect(form).toBe('<form action="#" method="POST"></form>');
   });
 
   it('creates a form with a custom action URL', () => {
     const template = {};
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const form = HexletCode.formFor(template, { method: 'post', action: '/users' }, (f) => {});
     expect(form).toBe('<form action="/users" method="POST"></form>');
   });
@@ -41,6 +43,7 @@ describe('HexletCode.formFor', () => {
   it('throws an error for a non-existing field', () => {
     const template = { name: 'rob' };
     expect(() => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       HexletCode.formFor(template, { method: 'post' }, (f) => {
         f.input('age');
       });

@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Tag = void 0;
-class Tag {
+export class Tag {
     constructor(name, attributes = {}, content) {
         this.name = name;
         this.attributes = attributes;
@@ -28,7 +25,6 @@ class Tag {
             : this.selfClosingTag();
     }
 }
-exports.Tag = Tag;
 class FormBuilder {
     constructor(template) {
         this.template = template;
@@ -57,7 +53,7 @@ class FormBuilder {
         return this.fields;
     }
 }
-class HexletCode {
+export default class HexletCode {
     static formFor(template, options, callback) {
         const formBuilder = new FormBuilder(template);
         callback(formBuilder);
@@ -67,4 +63,3 @@ class HexletCode {
         return `<form action="${formAction}" method="${formMethod}">${formFields}</form>`;
     }
 }
-exports.default = HexletCode;

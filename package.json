@@ -1,5 +1,6 @@
 {
-  "name": "tsspr",
+  "name": "@hexlet/code",
+  "type": "module",
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/demeena/typescript-developer-project-81/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/demeena/typescript-developer-project-81/actions)",
   "main": "index.js",
@@ -12,9 +13,32 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
     "c8": "^9.1.0",
     "eslint": "^8.56.0",
-    "eslint-plugin-react": "^7.33.2",
     "vitest": "^1.2.2"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2021": true,
+      "node": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaVersion": 12,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "rules": {
+     
+    }
   }
 }
